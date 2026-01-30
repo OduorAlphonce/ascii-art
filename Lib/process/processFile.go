@@ -28,7 +28,7 @@ func ProcessResults(data []string) [][][]rune {
 	startInd := 1
 	results := [][][]rune{}
 
-	for startInd+height < len(data) {
+	for startInd+height <= len(data) {
 		visual := make([][]rune, height)
 
 		for x := 0; x < height; x++ {

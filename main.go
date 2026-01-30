@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
 
+	//"strconv"
+
+	"ascii_art/Lib/process"
 	"ascii_art/Lib/check"
 	"ascii_art/Lib/print"
 )
@@ -12,19 +14,16 @@ import (
 func main() {
 	input := os.Args
 
-	data, err := check.Args(input)
+	fileName, data, err := check.Args(input)
 
 	if !err {
 		fmt.Println(data)
+		return
 	}
-	someStr := []string{}
-	for x := 0; x < 95; x++ {
-		someStr = append(someStr, strconv.Itoa(x))
-	}
-	listToPrint := print.AsciiArt(data, someStr)
+	// still needs to be tested with a [[[],[]],[[],[]]]
+	// printFormat := Lib.Wrapper("standard.txt")
 
-	for _, str := range listToPrint {
-		fmt.Print(str)
-	}
-	fmt.Print("\n")
+	printFormat := process.Wrapper(fileName)
+
+	print.AsciiArt(data, printFormat)
 }
